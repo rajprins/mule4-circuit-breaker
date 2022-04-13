@@ -49,7 +49,7 @@ public class CircuitBreakerOperations {
          failureCount = Integer.parseInt(objectStore.get("failureCount", "0", configuration.getBreakerName()));
          int nextFailureCount = failureCount + 1;
 
-         System.out.println("*** Failure count: " + nextFailureCount + " ***");
+         logger.info("*** Failure count: " + nextFailureCount + " ***");
          objectStore.set("failureCount", String.valueOf(nextFailureCount), configuration.getBreakerName());
 
          if ((nextFailureCount) == configuration.getThreshold()) {

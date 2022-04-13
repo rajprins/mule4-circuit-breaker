@@ -15,19 +15,17 @@ import org.mule.runtime.api.store.ObjectStoreManager;
 public class ObjectStoreHelper {
 
    private ObjectStore<String> objectStore;
-   
-   private SimpleLogger logger = new SimpleLogger(ObjectStoreHelper.class.getCanonicalName());
 
-   public ObjectStoreHelper(ObjectStoreManager osm) {
-      objectStore = osm.getDefaultPartition();
+   public ObjectStoreHelper(ObjectStoreManager objectStoreManager) {
+      objectStore = objectStoreManager.getDefaultPartition();
    }
 
    /**
     * Get synchronously property from the Object Store for given circuit
     * 
-    * @param propertyName Name of the property to extract
-    * @param defaultValue Default value to return in case no value found
-    * @param circuitBreakerName  Circuit Breaker's name
+    * @param propertyName       Name of the property to extract
+    * @param defaultValue       Default value to return in case no value found
+    * @param circuitBreakerName Circuit Breaker's name
     * 
     * @return
     */
