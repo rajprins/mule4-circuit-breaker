@@ -30,6 +30,7 @@ The circuit is opened for a specified period of time. After timeout occurs, the 
 </dependency>
 ```
 The module will appear in the Mule Palette
+![](https://raw.githubusercontent.com/rajprins/circuit-breaker-module/main/docs/images/palette.png)
 
 ## Usage
 * Drag the `filter` component to your Mule flow. Place it **before** any message processors that should be monitored.
@@ -43,7 +44,10 @@ Simply import the project from the `/demo` folder into Anypoint Studio.
 
 ## Demo app functionalities
 The demo application uses a custom Java component that simulates an outbound connection which failes, and throws an exception.  
-The error handler catches the exception, and executes the `Record failure` component. After 3 attempts, the circuit breaker will go into "circuit open" state and will temporarily pauze processing. After 5 seconds, processing will be resumed.  
+![](https://raw.githubusercontent.com/rajprins/circuit-breaker-module/main/docs/images/flow.png)
+
+The error handler catches the exception, and executes the `Record failure` component. After 3 attempts, the circuit breaker will go into "circuit open" state and will temporarily pauze processing. 
+After 5 seconds, processing will be resumed.
 
 ## Running the demo app
 * Import the demo app into Anypoint Studio.
