@@ -35,6 +35,8 @@ The module will appear in the Mule Palette
 ## Usage
 * Drag the `filter` component to your Mule flow. Place it **before** any message processors that should be monitored.
 * Click the `filter` component. In the properties view, add a new module configuration.
+* Fill out the details
+![](https://raw.githubusercontent.com/rajprins/circuit-breaker-module/main/docs/images/config.png)
 * In the error handling section, place an `On Error Propagete` component.
 * Inside the `on error propagate` scope, place the `Record failure` component.
 
@@ -53,7 +55,10 @@ After 5 seconds, processing will be resumed.
 * Import the demo app into Anypoint Studio.
 * Run the app.
 * Open a browser and enter this URL: http://localhost:8081/test
-* Notice the error message.
+* Notice the error message.  
+![](https://raw.githubusercontent.com/rajprins/circuit-breaker-module/main/docs/images/circuit-closed.png)
 * Reload the URL several times until the Circuit Breaker goes into "open" state and displays its own error message.
+  ![](https://raw.githubusercontent.com/rajprins/circuit-breaker-module/main/docs/images/circuit-open.png)
 * Wait for 5 seconds and reload the URL.
 * Notice how the connection error message appears again.
+![](https://raw.githubusercontent.com/rajprins/circuit-breaker-module/main/docs/images/circuit-closed.png)
