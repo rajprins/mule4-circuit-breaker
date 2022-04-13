@@ -1,58 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<project 
-	xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>78c0ea12-20af-4903-a3cf-75a5afdba941</groupId>
-	<artifactId>circuit-breaker-module</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
-	<packaging>mule-extension</packaging>
-	<name>Circuit Breaker Extension</name>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>fd604b43-365c-42e8-810f-733a2b7f411f</groupId>
+    <artifactId>circuit-breaker-module</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>mule-extension</packaging>
+    <name>Circuit Breaker Extension</name>
 
-	<parent>
-		<groupId>org.mule.extensions</groupId>
-		<artifactId>mule-modules-parent</artifactId>
-		<version>1.1.3</version>
-	</parent>
+    <parent>
+        <groupId>org.mule.extensions</groupId>
+        <artifactId>mule-modules-parent</artifactId>
+        <version>1.1.3</version>
+    </parent>
 
-	<properties>
-		<category>Community</category>
-		<licensePath>LICENSE.md</licensePath>
-		<devkit.studio.package.skip>false</devkit.studio.package.skip>
-		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.source>1.8</maven.compiler.source>
-	</properties>
+    <properties>
+        <category>Community</category>
+        <licensePath>LICENSE.md</licensePath>
+        <devkit.studio.package.skip>false</devkit.studio.package.skip>
+        <mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
 
-	<profiles>
-		<profile>
-			<id>exchange</id>
-			<distributionManagement>
-				<repository>
-					<id>ExchangeRepository</id>
-					<name>Corporate Repository</name>
-					<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/78c0ea12-20af-4903-a3cf-75a5afdba941/maven</url>
-					<layout>default</layout>
-				</repository>
-			</distributionManagement>
-		</profile>
-	</profiles>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<classifier>mule-application</classifier>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>exchange-repository</id>
+            <name>Exchange Repository</name>
+            <url>https://maven.anypoint.mulesoft.com/api/v1/organizations/fd604b43-365c-42e8-810f-733a2b7f411f/maven
+            </url>
+            <layout>default</layout>
+        </snapshotRepository>
+        <repository>
+            <id>exchange-repository</id>
+            <name>Exchange Repository</name>
+            <url>https://maven.anypoint.mulesoft.com/api/v1/organizations/fd604b43-365c-42e8-810f-733a2b7f411f/maven
+            </url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <classifier>mule-application</classifier>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

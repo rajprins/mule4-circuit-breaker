@@ -23,7 +23,7 @@ The circuit is opened for a specified period of time. After timeout occurs, the 
 * Add this dependency to your application's pom.xml.
 ```
 <depenency>
-    <groupId>78c0ea12-20af-4903-a3cf-75a5afdba941</groupId>
+    <groupId>fd604b43-365c-42e8-810f-733a2b7f411f</groupId>
     <artifactId>circuit-breaker-module</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <classifier>mule-plugin</classifier>
