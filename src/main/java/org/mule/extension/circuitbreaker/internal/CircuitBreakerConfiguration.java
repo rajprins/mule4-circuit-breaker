@@ -38,7 +38,7 @@ public class CircuitBreakerConfiguration {
     */
    @Parameter
    @DisplayName("Time out (ms)")
-   @Optional(defaultValue = "50000")
+   @Optional(defaultValue = "5000")
    private int timeout;
 
    /**

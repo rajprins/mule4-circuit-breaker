@@ -12,10 +12,10 @@ public class CircuitOpenException extends Exception {
 
    private static final long serialVersionUID = -1087947009213021862L;
 
-   private static final String MESSAGE = "Failure threshold reached. Further requests will temporarily not be processed";
+   private static final String ERRMSG = "Failure threshold reached, processing will temporarily be suspended";
 
    public CircuitOpenException() {
-      super(MESSAGE);
+      super(ERRMSG);
    }
 
 }

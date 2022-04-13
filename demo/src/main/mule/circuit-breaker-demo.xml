@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/jav
 	</http:listener-config>
 
 
-	<circuit-breaker-module:config name="Circuit_Breaker_Module_Config" doc:name="Circuit Breaker Module Config" doc:id="cebf60ac-90c4-4fd2-a836-6ca4e7d0cb33" breakerName="MuleCircuitBreaker" />
+	<circuit-breaker-module:config name="Circuit_Breaker_Module_Config" doc:name="Circuit Breaker Module Config" doc:id="cebf60ac-90c4-4fd2-a836-6ca4e7d0cb33" breakerName="MuleCircuitBreaker" timeout="5000"/>
 	<flow name="circuit-breaker-demoFlow" doc:id="f5040b17-d87c-4de0-aa98-f83363027e29" >
 		<http:listener doc:name="Listener" doc:id="213fe7b3-8bbe-4e15-b0d7-46017a1d3f4a" config-ref="HTTP_Listener_config" path="/test"/>
 		<circuit-breaker-module:filter doc:name="Filter" doc:id="156c471e-a25c-4b2c-9f10-259725255b85" config-ref="Circuit_Breaker_Module_Config"/>

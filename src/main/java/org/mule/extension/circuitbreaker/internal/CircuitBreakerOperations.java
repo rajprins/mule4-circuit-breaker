@@ -22,7 +22,6 @@ import org.mule.runtime.extension.api.annotation.param.MediaType;
 /**
  * This class is a container for operations, every public method in this class will be taken as an extension operation.
  *
- * @Author Roy Prins
  */
 public class CircuitBreakerOperations {
    
@@ -59,8 +58,8 @@ public class CircuitBreakerOperations {
    }
 
    /**
-    * Filter the message if the failures' threshold has been met. 
-    * In other words Circuit Breaker has been opened and no new messages are allowed to pass further.
+    * Filter the message if the failure threshold has been met. 
+    * In that case, the Circuit Breaker has been opened and no new messages are allowed to pass further.
     * 
     * @param configuration Circuit Breaker configuration
     * 
