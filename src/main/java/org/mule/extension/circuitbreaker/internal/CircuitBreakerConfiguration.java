@@ -12,6 +12,8 @@ import org.mule.runtime.extension.api.annotation.Operations;
 import org.mule.runtime.extension.api.annotation.param.Optional;
 import org.mule.runtime.extension.api.annotation.param.Parameter;
 import org.mule.runtime.extension.api.annotation.param.display.DisplayName;
+import org.mule.runtime.extension.api.annotation.param.display.Placement;
+import org.mule.runtime.extension.api.annotation.param.display.Summary;
 
 
 /**
@@ -30,15 +32,19 @@ public class CircuitBreakerConfiguration {
     */
    @Parameter
    @Optional(defaultValue = "3")
+   @Placement(order = 1)
    @DisplayName("Failure threshold")
+   @Summary("Number of failures before circuit is opened")
    private int threshold;
 
    /**
     * Period of time in milliseconds for the circuit to stay open.
     */
    @Parameter
-   @DisplayName("Time out (ms)")
    @Optional(defaultValue = "5000")
+   @Placement(order = 2)
+   @DisplayName("Time out (ms)")
+   @Summary("Time in milliseconds for the circuit to remain open before continuing")
    private int timeout;
 
    /**
@@ -46,7 +52,9 @@ public class CircuitBreakerConfiguration {
     * No default value
     */
    @Parameter
+   @Placement(order = 3)
    @DisplayName("Circuit breaker name")
+   @Summary("Friendly name for the circuit breaker")
    private String breakerName;
 
    

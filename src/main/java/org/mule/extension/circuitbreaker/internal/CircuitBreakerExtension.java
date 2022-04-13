@@ -9,22 +9,23 @@
 package org.mule.extension.circuitbreaker.internal;
 
 import org.mule.extension.circuitbreaker.api.util.SimpleLogger;
+import org.mule.runtime.api.meta.Category;
 import org.mule.runtime.extension.api.annotation.Configurations;
 import org.mule.runtime.extension.api.annotation.Extension;
 import org.mule.runtime.extension.api.annotation.dsl.xml.Xml;
 
 /**
- * A module that implements the circuit breaker pattern
+ * Circuit Breaker module
  *
  * @Author Roy Prins
  * 
  */
 @Xml(prefix = "circuit-breaker-module")
-@Extension(name = "Circuit Breaker Module")
+@Extension(name = "Circuit Breaker Module", category = Category.COMMUNITY)
 @Configurations(CircuitBreakerConfiguration.class)
 public class CircuitBreakerExtension {
    
-   private SimpleLogger logger = new SimpleLogger(CircuitBreakerExtension.class.getCanonicalName());
+   private static final SimpleLogger logger = new SimpleLogger(CircuitBreakerExtension.class.getCanonicalName());
 
    public CircuitBreakerExtension() {
       logger.info("*** CircuitBreakerExtension initialized ***");

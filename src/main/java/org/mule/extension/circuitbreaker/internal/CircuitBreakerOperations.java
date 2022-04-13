@@ -22,10 +22,12 @@ import org.mule.runtime.extension.api.annotation.param.MediaType;
 /**
  * This class is a container for operations, every public method in this class will be taken as an extension operation.
  *
+ *  @Author Roy Prins
+ * 
  */
 public class CircuitBreakerOperations {
    
-   private SimpleLogger logger = new SimpleLogger(CircuitBreakerOperations.class.getCanonicalName());
+   private static final SimpleLogger logger = new SimpleLogger(CircuitBreakerOperations.class.getCanonicalName());
 
 
    @Inject
