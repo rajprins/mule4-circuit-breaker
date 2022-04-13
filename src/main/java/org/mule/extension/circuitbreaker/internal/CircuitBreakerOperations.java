@@ -68,7 +68,9 @@ public class CircuitBreakerOperations {
     */
    @MediaType(value = ANY, strict = false)
    public void filter(@Config CircuitBreakerConfiguration configuration) throws CircuitOpenException {
+      
       ObjectStoreHelper objectStore = new ObjectStoreHelper(objectStoreManager);
+      
       long openedAt = Long.parseLong(objectStore.get("openedAt", "0", configuration.getBreakerName()));
 
       if (openedAt != 0 && (System.currentTimeMillis() - openedAt) > configuration.getTimeout()) {
@@ -81,7 +83,7 @@ public class CircuitBreakerOperations {
          // do nothing
       }
       else {
-         logger.info("*** Failure threshold reached, circuit is now open ***");
+         logger.info("*** Failure threshold reached, further request will temporarily not be processed ***");
          throw new CircuitOpenException();
       }
    }
