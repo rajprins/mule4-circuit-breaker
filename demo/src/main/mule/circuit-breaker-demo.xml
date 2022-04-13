@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:java="http://www.mulesoft.org/schema/mule/java" xmlns:circuit-breaker-module="http://www.mulesoft.org/schema/mule/circuit-breaker-module"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/circuit-breaker-module http://www.mulesoft.org/schema/mule/circuit-breaker-module/current/mule-circuit-breaker-module.xsd
+http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/java/current/mule-java.xsd">
+
+
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="63b60da6-2ad6-4a03-aca1-78469c3b676d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+
+
+	<circuit-breaker-module:config name="Circuit_Breaker_Module_Config" doc:name="Circuit Breaker Module Config" doc:id="cebf60ac-90c4-4fd2-a836-6ca4e7d0cb33" breakerName="MuleCircuitBreaker" />
+	<flow name="circuit-breaker-demoFlow" doc:id="f5040b17-d87c-4de0-aa98-f83363027e29" >
+		<http:listener doc:name="Listener" doc:id="213fe7b3-8bbe-4e15-b0d7-46017a1d3f4a" config-ref="HTTP_Listener_config" path="/test"/>
+		<circuit-breaker-module:filter doc:name="Filter" doc:id="156c471e-a25c-4b2c-9f10-259725255b85" config-ref="Circuit_Breaker_Module_Config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="2bcc0701-0745-4b15-b195-2208c928d5aa" message="Making connection to external resource"/>
+		<java:new constructor="DummyServiceComponent()" doc:name="New" doc:id="dfcd344a-f98f-4136-810b-a6c95dc0067b" class="com.mulesoft.training.demo.DummyServiceComponent" target="DummyServiceComponent"/>
+		<java:invoke method="mockServiceCall()" doc:name="Invoke" doc:id="063764b0-bac1-4cce-b464-6d2bf48093da" class="com.mulesoft.training.demo.DummyServiceComponent" instance="#[vars.DummyServiceComponent]"/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="7691384a-72c6-40ce-a327-f01659f7661f" >
+				<circuit-breaker-module:record-failure doc:name="Record failure" doc:id="576bd874-ae66-4c6b-b050-6beca5a77ae6" config-ref="Circuit_Breaker_Module_Config"/>
+				<set-payload value="An error occurred. Please try again." doc:name="Set Payload" doc:id="1e6eff8f-5925-4abc-ba5d-aad542ec05cf" />
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>

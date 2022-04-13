@@ -70,20 +70,18 @@ public class CircuitBreakerOperations {
    public void filter(@Config CircuitBreakerConfiguration configuration) throws CircuitOpenException {
       
       ObjectStoreHelper objectStore = new ObjectStoreHelper(objectStoreManager);
-      
       long openedAt = Long.parseLong(objectStore.get("openedAt", "0", configuration.getBreakerName()));
 
       if (openedAt != 0 && (System.currentTimeMillis() - openedAt) > configuration.getTimeout()) {
+         logger.info("*** Timeout expired. Resetting failure count ***");
          objectStore.set("openedAt", "0", configuration.getBreakerName());
-         
-         logger.info("*** Resetting failure count ***");
          objectStore.set("failureCount", "0", configuration.getBreakerName());
       }
       else if (openedAt == 0) {
          // do nothing
       }
       else {
-         logger.info("*** Failure threshold reached, further request will temporarily not be processed ***");
+         logger.info("*** Failure threshold reached, processing will temporarily be suspended ***");
          throw new CircuitOpenException();
       }
    }

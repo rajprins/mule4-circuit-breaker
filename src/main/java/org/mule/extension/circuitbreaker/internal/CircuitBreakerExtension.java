@@ -27,7 +27,7 @@ public class CircuitBreakerExtension {
    private SimpleLogger logger = new SimpleLogger(CircuitBreakerExtension.class.getCanonicalName());
 
    public CircuitBreakerExtension() {
-      logger.info("CircuitBreakerExtension initialized.");
+      logger.info("*** CircuitBreakerExtension initialized ***");
       
    }
 
